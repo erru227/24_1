@@ -1,7 +1,7 @@
 {
-    "name": "nodejs-write-example",
+    "name": "24-1",
     "version": "1.0.0",
-    "description": "Used to showcase basic server writing functionality",
+    "description": "Used to showcase basic server Node.js functionality, with simple elements brought together for a complex result",
     "scripts": {
         "start": "node server.js"
     },
