@@ -1,8 +1,8 @@
 const http = require('http');
 const fs = require('fs');
 
-http.createServer((req, res) => {
-    if (req.method === 'POST') {
+http.createServer(async (req, res) => {
+    if (req.method === 'POST' && req.url === '/upload') {
         let name = '';
         for await (const chunk of req) {
             name += chunk;
