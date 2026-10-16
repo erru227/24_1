@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 
 http.createServer((req, res) => {
-    if (req.method === 'POST') {
+    if (req.method === 'POST' && req.url === '/upload') {
         let name = '';
         req.on('data', (chunk) => name += chunk);
         req.on('end', () => {
