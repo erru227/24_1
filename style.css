@@ -1,0 +1,9 @@
+body {
+    font-size:28px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    text-align: center;
+}
+
+button,select,option,input[type="text"],[type="number"]{
+    font-size:28px;
+}
