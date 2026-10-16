@@ -2,15 +2,15 @@ const http = require('http');
 const fs = require('fs');
 
 http.createServer((req, res) => {
-    if (req.method === 'POST' && req.url === '/upload') {
+    if (req.method === 'POST') {
         let name = '';
-        req.on('data', (chunk) => name += chunk);
-        req.on('end', () => {
-            const data = JSON.parse(fs.readFileSync('data.json'));
-            data.names[data.names.length] = name;
-            fs.writeFileSync('data.json', JSON.stringify(data));
-            res.end('Saved');
-        });
+        for await (const chunk of req) {
+            name += chunk;
+        }
+        const data = JSON.parse(fs.readFileSync('data.json'));
+        data.names[data.names.length] = name;
+        fs.writeFileSync('data.json', JSON.stringify(data));
+        res.end('Saved');
     } else if (req.url === '/data.json') {
         res.end(fs.readFileSync('data.json'));
     } else if (req.url === '/style.css') {
